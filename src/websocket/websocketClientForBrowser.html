@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSockets!</title>
+</head>
+<body>
+<!-- run on browser with the server -->
+<h2>WebSockets! Looks at consoles from the server and browser</h2>
+    <script>
+        window.onload = function() {
+            var ws = new WebSocket('ws://localhost:8080', 'echo-protocol');
+
+            ws.open = function() {
+              console.log('opened');
+            };
+
+            ws.onmessage = function(event) {
+                console.log(event);
+                ws.send(JSON.stringify({
+                    status: 'okay'
+                }));
+            };
+        }
+    </script>
+</body>
+</html>

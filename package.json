@@ -1,0 +1,27 @@
+{
+  "name": "nodejs_recipes_advanced_techniques",
+  "version": "1.0.0",
+  "description": "",
+  "main": "parseUrl.js",
+  "dependencies": {
+    "websocket": "^1.0.22"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node parseUrl.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Watke/Nodejs-Recipes-Advanced-Techniques.git"
+  },
+  "keywords": [
+    "nodejs;",
+    "recipes;",
+    "Apress;"
+  ],
+  "author": "Cory Gackenheimer (original)",
+  "bugs": {
+    "url": "https://github.com/Watke/Nodejs-Recipes-Advanced-Techniques/issues"
+  },
+  "homepage": "https://github.com/Watke/Nodejs-Recipes-Advanced-Techniques"
+}
