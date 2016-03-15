@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Socket IO Client</title>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+</head>
+<body>
+    <h3>Socket IO Client</h3>
+    <div id="messages"></div>
+    <form id="newChat">
+        <textarea id="text"></textarea>
+        <input type="submit" id="sendMessage" value="Send"/>
+    </form>
+    <script>
+        var socket = io.connect('http://localhost:8080');
+
+        var who;
+
+        socket.on('connect', function () {
+            var chatter = prompt('Please enter your name');
+            chatter = (chatter === "" || chatter === null) ? "anon" : chatter;
+            addChatter("you", "Joined");
+            who = chatter;
+            socket.emit('joined', {
+                name: chatter
+            });
+        });
+
+        function addChatter(name, message) {
+            var chat = document.getElementById("messages");
+            chat.innerHTML += "<div>" + name + " - " + message + "</div>";
+        }
+
+        socket.on('joined', function(data) {
+           addChatter(data.name, 'joined');
+        });
+
+        socket.on('disconnected', function (data) {
+            addChatter(data.name, 'disconnected');
+        });
+
+        socket.on('message', function(data) {
+            addChatter(data.name, data.message);
+        });
+
+        var chat = document.getElementById("newChat");
+
+        chat.onsubmit = function () {
+            var message = document.getElementById("text").value;
+            socket.emit('message', {
+                name : who,
+                message: message
+            });
+            document.getElementById('text').value = ""; // clear out the value
+            addChatter(who, message);
+            return false; // do not actually submit the form, so return false
+        }
+    </script>
+</body>
+</html>
