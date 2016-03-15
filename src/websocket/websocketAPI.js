@@ -34,7 +34,7 @@ wsserver.on('connect', function(connection) {
 });
 
 wsserver.on('request', function(req) {
-    if (req.requestedProtocols === 'echo-protocol') { // if the protocol then we accept it
+    if (req.requestedProtocols[0] === 'echo-protocol') { // if the protocol then we accept it
         var connection = req.accept('echo-protocol', req.origin);
 
         connection.on('message', function (message) {

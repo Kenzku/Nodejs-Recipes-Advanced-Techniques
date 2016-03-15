@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Router</title>
+</head>
+<body>
+    <h3>WebSocket Router Client</h3>
+    <script>
+        window.onload = function() {
+            var ws = new WebSocket('ws://localhost:8080', 'echo-protocol');
+            ws.onopen = function() {
+                console.log('opened');
+            };
+            ws.onmessage = function (event) {
+                console.log(event);
+                ws.send(JSON.stringify({status:'ok', path:'route_a'}));
+            };
+
+            var wsupdate = new WebSocket('ws://localhost:8080', 'update-protocol'); // a different protocol
+
+            wsupdate.onopen = function () {
+                wsupdate.send('update');
+            };
+        };
+    </script>
+
+</body>
+</html>
