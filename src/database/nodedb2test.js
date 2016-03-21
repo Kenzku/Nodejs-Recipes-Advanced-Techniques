@@ -1,4 +1,6 @@
-/*require the ibm_db module*/
+/*require the ibm_db module
+* https://www.npmjs.com/package/ibm_db
+* */
 var ibmdb = require('ibm_db');
 
 console.log("Test program to access DB2 sample database");
