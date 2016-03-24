@@ -25,4 +25,4 @@ module.exports = {
     }
 }
 
-// run: nodeunit nodeUnitTest.js
+// run: nodeunit useNodeunit.js
