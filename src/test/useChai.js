@@ -24,3 +24,14 @@ three.should.be.a('number');
 three.should.be.a('String'); // this should fail
 
 // run: node useChai.js
+
+// async test pattern
+
+var squareAsync = function (a, callback) {
+    result = a * a;
+    callback(result);
+}
+
+squareAsync(three, function (result) {
+    assert.equal(result, 9, '3 squared is nine');
+})

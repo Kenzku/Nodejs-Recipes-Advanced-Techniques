@@ -26,3 +26,14 @@ describe('useMocha', function () { // suite
 });
 
 // mocha useMocha.js
+
+// async test pattern
+
+var squareAsync = function (a, callback) {
+    result = a * a;
+    callback(result);
+}
+
+squareAsync(three, function (result) {
+    assert.equal(result, 9, '3 squared is nine');
+})

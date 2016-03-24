@@ -14,3 +14,14 @@ assert.notEqual(three, 'three', 'the integer 3 is not equal to three');
 assert.ok(true, 'truthy');
 
 //assert.ok(false, 'not true'); // will throw error
+
+// async test pattern
+
+var squareAsync = function (a, callback) {
+    result = a * a;
+    callback(result);
+}
+
+squareAsync(three, function (result) {
+    assert.equal(result, 9, '3 squared is nine');
+});
